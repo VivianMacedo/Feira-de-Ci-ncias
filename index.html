@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor de Digital Fake</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        #scanner {
+            width: 200px;
+            cursor: pointer;
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        #imageContainer {
+            display: none;
+            margin-top: 20px;
+        }
+        #impactImage {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coloque sua digital para acessar</h1>
+    <img id="scanner" src="scanner.png" alt="Leitor de Digital" onclick="startScan()">
+    <p id="status">Toque no leitor</p>
+    <div id="imageContainer">
+        <img id="impactImage" src="" alt="Mensagem Impactante">
+    </div>
+    
+    <script>
+        // Lista de imagens para exibir
+        const imagens = ["impacto1.jpg", "impacto2.jpg", "impacto3.jpg"]; 
+
+        function startScan() {
+            document.getElementById("status").innerText = "Escaneando...";
+            setTimeout(() => {
+                document.getElementById("status").innerText = "Acesso liberado!";
+                document.getElementById("imageContainer").style.display = "block";
+
+                // Escolhe uma imagem aleatória
+                let imagemAleatoria = imagens[Math.floor(Math.random() * imagens.length)];
+                document.getElementById("impactImage").src = imagemAleatoria;
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
